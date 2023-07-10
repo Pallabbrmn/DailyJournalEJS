@@ -19,8 +19,6 @@ app.use(express.static("public"));
 
 let posts = [];
 
-
-
 app.get("/", function(req, res){
   res.render("home", {
                       thePara : homeStartingContent,
@@ -31,8 +29,6 @@ app.get("/", function(req, res){
 app.get('/posts/:post1', function(req, res){
   let reqTitle = _.lowerCase(req.params.post1);
 
-
-
   posts.forEach(function(post1){
     let storedTitle = _.lowerCase(post1.title);
     if(storedTitle === reqTitle){
@@ -40,10 +36,7 @@ app.get('/posts/:post1', function(req, res){
           post_title: post1.title,
           post_description: post1.description});
     }
-  });
-
-  
-  
+  }); 
 });
 
 app.get("/about", function(req, res){
@@ -68,19 +61,6 @@ app.post("/compose", function(req, res){
   res.redirect("/");
   
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");
